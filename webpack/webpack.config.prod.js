@@ -1,6 +1,7 @@
 const webpack= require('webpack');
 const webpackMerge = require('webpack-merge');
 const webpackConfigBase = require('./webpack.config.base.js');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
@@ -15,6 +16,7 @@ module.exports = function() {
       publicPath: './'
     },
     externals: {
+      // example :
       // react: 'react',
       // 'react-dom': 'reactDOM'
     },
@@ -53,7 +55,6 @@ module.exports = function() {
            NODE_ENV: JSON.stringify("production")
          }
       }),
-      new ExtractTextPlugin('[chunkhash].bundle.css'),
       new HtmlWebpackPlugin({
         inject: true,
         template: 'index.html',
@@ -70,6 +71,14 @@ module.exports = function() {
           minifyURLs: true
         }
       }),
+      new ExtractTextPlugin('[chunkhash].bundle.css'),
+      new CopyWebpackPlugin([
+      {
+        context: paths.static,
+        to: '../',
+        from: '**/**'
+      }
+      ])
     ]
   })
 };

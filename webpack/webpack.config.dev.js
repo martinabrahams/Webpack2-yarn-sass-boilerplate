@@ -1,16 +1,14 @@
 const webpackMerge = require('webpack-merge');
 const webpackConfigBase = require('./webpack.config.base.js');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const paths = {
-  'static': path.resolve(__dirname, '../src/static')
+  'static': path.resolve(__dirname, '../src/')
 };
 
 module.exports = function() {
   return webpackMerge(webpackConfigBase(), {
-    output: {
-      publicPath: '/assets'
-    },
     module: {
       rules: [
         {
@@ -44,7 +42,13 @@ module.exports = function() {
       }
     },
     plugins: [
-      new ExtractTextPlugin('[name].bundle.css')
+      // Generates an `index.html` file with the <script> injected.
+      new HtmlWebpackPlugin({
+        inject: true,
+        template: paths.static +  '/index.html',
+      }),
+      // This is necessary to emit hot updates (currently CSS only):
+      // new webpack.HotModuleReplacementPlugin()
     ]
   })
 };
