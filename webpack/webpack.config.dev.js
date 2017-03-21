@@ -34,6 +34,7 @@ module.exports = function() {
         }
       ]
     },
+    // Dev server config
     devServer: {
       contentBase: paths.static,
       port: 8080,
@@ -42,13 +43,11 @@ module.exports = function() {
       }
     },
     plugins: [
-      // Generates an `index.html` file with the <script> injected.
+      // Generates an `index.html` file with <script> injected.
       new HtmlWebpackPlugin({
         inject: true,
         template: paths.static +  '/index.html',
-      }),
-      // This is necessary to emit hot updates (currently CSS only):
-      // new webpack.HotModuleReplacementPlugin()
+      })
     ]
   })
 };
