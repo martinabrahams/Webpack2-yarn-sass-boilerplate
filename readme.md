@@ -62,4 +62,4 @@ This project uses Sass, if you prefer Less or just plain old css you can remve i
 
 ### javascript linting
 
-This project uses [ESLint](http://eslint.org/) for Javascript (ES6) linting. The config (`/.eslintrc`) included out of the box is very basic and does not contain many rules. I recommend modifying this to your liking. Check out [the official docs](http://eslint.org/docs/2.0.0/rules/) for more information.
+This project uses [ESLint](http://eslint.org/) for Javascript (ES6) linting. The config (`/.eslintrc`) included out of the box is based on the create-react-app file. It is focused on warnings and do not include any plugins. I recommend modifying this to your liking. Check out [the official docs](http://eslint.org/docs/2.0.0/rules/) for more information.
