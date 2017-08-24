@@ -30,35 +30,25 @@ _Note: if you hate Yarn for some reason, you can skip Step 2 and use `npm instal
 ### local development
 This boilerplate uses [webpack-dev-server](https://github.com/webpack/webpack-dev-server) to serve up your project at [http://localhost:8080](http://localhost:8080) for streamlined and convenient development.
 
-After running `yarn run dev` in the project root, your `/src` code will be served at the url above and watched for changes. As you modify code in `/src`, the project will be recompiled and your browser will refresh to show the latest changes.
+After running `yarn dev` in the project root, your `/src` code will be served at the url above and watched for changes. As you modify code in `/src`, the project will be recompiled and your browser will refresh to show the latest changes.
 
 ```
 cd /path/to/repo
-yarn run dev
+yarn dev
 ```
 
 ### building for production
-Use `yarn run build` in your project root to run a production build.
+Use `yarn build` in your project root to run a production build.
 
 Production builds compile & minify your assets into `/dist` for distribution and/or integration into whatever codebase you'll be using these assets in.
 
 ```
 cd /path/to/repo
-yarn run build
+yarn build
 ```
 
 ## features you may want to remove
 
 ### Sass
 
-This project uses Sass, if you prefer Less or just plain old css you can remve it from the project.
-
-1. Change `test: /\.sass$/` in both `/webpack/webpack.config.prod.js` and `/webpack/webpack.config.dev.js` to `test: /\.css$/` or your choice of file extension.
-2. Remove `sass-loader` from both `/webpack/webpack.config.prod.js` and `/webpack/webpack.config.dev.js`
-3. Run `yarn remove node-sass sass-loader` dependency from `/package.json`
-
-## features you may want to customize
-
-### javascript linting
-
-This project uses [ESLint](http://eslint.org/) for Javascript (ES6) linting. The config (`/.eslintrc`) included out of the box is based on the create-react-app file. It is focused on warnings and do not include any plugins. I recommend modifying this to your liking. Check out [the official docs](http://eslint.org/docs/2.0.0/rules/) for more information.
+This project uses Sass (.scss), if you prefer .sass, use the sass format (and extention) instead changing all references to .scss -> .sass in `webpack.config.dev` and `webpack.config.prod`
