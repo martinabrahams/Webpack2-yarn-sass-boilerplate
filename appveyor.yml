@@ -1,0 +1,13 @@
+cache:
+ - "%LOCALAPPDATA%\\Yarn"
+
+before_build:
+  - yarn
+  - ps: $env:deploy_packagename = "boilerplate-deploy-$(get-date -f yyyyMMdd)-v" + $env:appveyor_build_number + ".zip" 
+
+build_script:
+  - yarn run build
+
+after_build:
+  - cmd: 7z a deploy.zip .\dist\assets\*
+  - ps: Push-AppveyorArtifact deploy.zip -FileName $env:deploy_packagename -DeploymentName websitebuild
