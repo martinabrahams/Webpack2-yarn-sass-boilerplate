@@ -47,8 +47,9 @@ cd /path/to/repo
 yarn build
 ```
 
-## features you may want to remove
-
 ### Sass
 
-This project uses Sass (.scss), if you prefer .sass, use the sass format (and extention) instead changing all references to .scss -> .sass in `webpack.config.dev` and `webpack.config.prod`
+This project uses Sass (.scss), if you prefer .sass, use the sass format (and extention) and change all references to .scss -> .sass in `webpack.config.dev` and `webpack.config.prod`
+
+### Credit
+This boilerplate was forked from [Lakston/Webpack2-yarn-sass-boilerplate](https://github.com/Lakston/Webpack2-yarn-sass-boilerplate), which I've customised to suit my specific needs.
