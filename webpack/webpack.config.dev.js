@@ -30,7 +30,6 @@ module.exports = function() {
               },
               'sass-loader'
             ]
-
         }
       ]
     },
@@ -42,6 +41,7 @@ module.exports = function() {
         poll: 1000
       }
     },
+    devtool: "source-map", // Default development sourcemap
     plugins: [
       // Generates an `index.html` file with <script> injected.
       new HtmlWebpackPlugin({

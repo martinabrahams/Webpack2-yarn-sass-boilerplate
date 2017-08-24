@@ -7,8 +7,25 @@ const paths = {
 module.exports = function() {
   return {
     context: paths.src,
+
+    // from angularjs
+    resolve: {
+      extensions: [
+        ".ts",
+        ".js"
+      ],
+      modules: [
+        "./node_modules"
+      ]
+    },
+    resolveLoader: {
+      modules: [
+        "./node_modules"
+      ]
+    },
+
     entry: {
-      app: ['./app.js']
+      app: ['./app/app.ts']
     },
     output: {
       filename: '[chunkhash].bundle.js',
@@ -16,24 +33,11 @@ module.exports = function() {
     },
     module: {
       rules: [
-        // Run the linter as a pre-loader
-        {
-          enforce: 'pre',
-          test: /\.js$/,
+        // TypeScript loader
+        { 
+          test: /\.tsx?$/, 
           exclude: /node_modules/,
-          use: ['eslint-loader']
-        },
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          use: [
-            {
-              loader: 'babel-loader',
-              options: {
-                presets: ['es2015']
-              }
-            }
-          ]
+          use: ['ts-loader']
         },
         {
           test: /\.(png|jpg|gif)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
